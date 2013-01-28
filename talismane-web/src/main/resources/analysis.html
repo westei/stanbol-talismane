@@ -1,0 +1,171 @@
+<html>
+  <head>
+
+    <title>Apache Stanbol Talismane RESTful Service</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <!-- to be moved in the dedicated fragment -->
+    <link rel="stylesheet" href="/static/home/style/stanbol.css" />
+    <link rel="icon" type="image/png" href="/static/home/images/favicon.png" />
+
+    <link rel="stylesheet" href="/static/stanbol.css" />
+
+  </head>
+
+  <body>
+    <div class="home"><a href="/"><img src="/static/apache_stanbol_logo_cropped.png" alt="Stanbol Home" /></a></div>
+    <div class="header">
+      <h1>Apache Stanbol Talismane Integration Server</h1>
+
+      <div class="mainNavigationMenu">
+      <ul>
+        <li class="unselected"><a href="/analysis">/analysis</a></li>
+      </ul>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+
+    <div class="content">
+      <h2>Talismane RESTful NLP Analysis Service</h2>
+      <div style="clear: both"></div>
+
+<p>This stateless interface allows the caller to perform natural language
+processing on the submitted text by using Talismane. The result of the
+analysis is provided as a JSON serialised AnalysedText.</p>
+
+<p>This service is intended to be used in combination with the Stanbol Enhancer
+RESTful NLP Analysis Engine 
+(<a href="https://issues.apache.org/jira/browse/STANBOL-893">STANBOL-893</a>).
+To use this service with the RESTful NLP Analysis Engine just configure this URI
+as Service URI to an Engine instance.</p>
+
+<h3>RESTful interface</h3>
+
+<p>This interface defines two Services as specified by 
+<a href="https://issues.apache.org/jira/browse/STANBOL-892">STANBOL-892</a></p>
+
+<h4>Supported Languages</h4>
+
+<p>Allows to retrieve the supported languages as JSON Array</p>
+
+<pre>
+curl -X GET -H "Accept: application/json" http://{host}:{port}/analysis
+</pre>
+
+<p>The <code>Accept</code> header is optional. Just make not sure that
+the <code>text/html</code> is used as <code>Accept</code> header because than
+you will receive this page instead.</p>
+
+<p>The response will be a simple JSON Array with the ISO 639-1 Code for French
+(the only supported language by this service)</p>
+
+<pre>
+["fr"]
+</pre>
+
+<h4>NLP Analysis</h4>
+
+<p>This service allows to analyse parsed text of supported languages (only 
+French in this case).
+Content to analyse should be sent in a POST request with 
+the <code>Content-Type</code> header set to '<code>text/plain</code>'. Also
+the <code>Content-Language</code> header MUST BE set to the language of the 
+parsed text (as language identification is not supported by this server). Values
+other than '<code>fr</code>' will result in a response with the status
+'<code>HTTP Error 400 Bad request</code>'.
+
+   
+<pre>
+curl -X POST -H "Content-Type: text/plain" -H "Content-Language: fr" \
+    --data "La Révolution française est la période de l'histoire de France \
+        comprise entre l'ouverture des États généraux en 1789 et le coup d'État \
+        du 18 brumaire (9-10 novembre 1799) de Napoléon Bonaparte" \
+    http://{host}:{port}/analysis
+</pre> 
+
+<p>The Response will be an JSON serialised AnalysedText content part. In addition
+the  <code>Content-Language</code> header will provide the language of the
+text. In case this header was present in the request it will be the same as
+the parsed value. Otherwise it represents the language detected for the
+parsed text</p>
+ 
+ <pre>
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Language: fr
+Transfer-Encoding: chunked
+Server: Jetty(6.0.x)
+
+{
+  "spans" : [ {
+    "type" : "Text",
+    "start" : 0,
+    "end" : 208
+  }, {
+    "type" : "Sentence",
+    "start" : 0,
+    "end" : 208
+  }, {
+    "type" : "Token",
+    "start" : 0,
+    "end" : 2,
+    "stanbol.enhancer.nlp.pos" : {
+      "tag" : "DET",
+      "pos" : 57,
+      "class" : "org.apache.stanbol.enhancer.nlp.pos.PosTag",
+      "prob" : 0.7112371564274051
+    }
+  }, {
+    "type" : "Token",
+    "start" : 3,
+    "end" : 13,
+    "stanbol.enhancer.nlp.pos" : {
+      "tag" : "NC",
+      "pos" : 45,
+      "class" : "org.apache.stanbol.enhancer.nlp.pos.PosTag",
+      "prob" : 0.9166410865477472
+    }
+  }, {
+    "type" : "Token",
+    "start" : 14,
+    "end" : 23,
+    "stanbol.enhancer.nlp.pos" : {
+      "tag" : "ADJ",
+      "lc" : 2,
+      "class" : "org.apache.stanbol.enhancer.nlp.pos.PosTag",
+      "prob" : 0.9923155078226038
+    }
+  }, {
+    "type" : "Token",
+    "start" : 24,
+    "end" : 27,
+    "stanbol.enhancer.nlp.pos" : {
+      "tag" : "V",
+      "pos" : 228,
+      "class" : "org.apache.stanbol.enhancer.nlp.pos.PosTag",
+      "prob" : 0.9587326828440991
+    }
+  [...]
+ </pre>
+ 
+
+    </div>
+
+    <div class="footer">
+
+    <div class="column">
+      <a href="http://stanbol.apache.org"><img
+        height="60px" src="/static/stanbol-2010-12-14.png"/></a>
+      <img height="60px" alt="Salzburg Research" 
+        src="/static/salzburg_research_logo.png" />
+    </div>
+    <div class="column right">
+      <em>Work on this Software was supported by 
+      <a href="http://www.salzburgresearch.at/">Salzburg Research</a>. 
+      <br/> The <a href="https://github.com/westei/stanbol-talismane">
+      Project Home</a> can be found on Github</em>
+    </div>
+    <div style="clear: both"></div>
+    </div>
+  </body>
+</html>

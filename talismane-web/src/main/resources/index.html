@@ -1,0 +1,66 @@
+<html>
+  <head>
+
+    <title>Apache Stanbol Talismane RESTful Service</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <!-- to be moved in the dedicated fragment -->
+    <link rel="stylesheet" href="/static/stanbol.css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" />
+
+  </head>
+
+  <body>
+    <div class="home"><a href="/"><img src="/static/apache_stanbol_logo_cropped.png" alt="Stanbol Home" /></a></div>
+    <div class="header">
+      <h1>Apache Stanbol Talismane Integration Server</h1>
+
+      <div class="mainNavigationMenu">
+      <ul>
+        <li class="unselected"><a href="/analysis">/analysis</a></li>
+      </ul>
+      </div>
+      <div style="clear: both"></div>
+    </div>
+
+    <div class="content">
+      <h2>The Apache Stanbol Talismane Integration</h2>
+      <div style="clear: both"></div>
+
+<p>This Server provides in integration for<a href="https://github.com/urieli/talismane">
+Talismane</a> with the Apache Stanbol Enhancer NLP module.
+</p><p>Talismane is used for Sentence detection, Tokenizing and Part of Speech
+tagging for French texts.
+</p>
+
+<p>This Server supports two RESTful APIs:</p>
+<dl>
+
+    parsed content</dd>
+    <dt><a href="/analysis">/analysis</a><dt>
+    <dd>Service that uses Talismane to analyse French texts and returns NLP
+    processing results as JSON serialised AnalysedText content part.</dd>
+    <dt><code>/langidnet</code><dt>
+    <dd>NOTE: This server does NOT support language identification!</dd>
+
+</dl>
+    </div>
+
+    <div class="footer">
+
+    <div class="column">
+      <a href="http://stanbol.apache.org"><img
+        height="60px" src="/static/stanbol-2010-12-14.png"/></a>
+      <img height="60px" alt="Salzburg Research" 
+        src="/static/salzburg_research_logo.png" />
+    </div>
+    <div class="column right">
+      <em>Work on this Software was supported by 
+      <a href="http://www.salzburgresearch.at/">Salzburg Research</a>. 
+      <br/> The <a href="https://github.com/westei/stanbol-talismane">
+      Project Home</a> can be found on Github</em>
+    </div>
+    <div style="clear: both"></div>
+    </div>
+  </body>
+</html>
