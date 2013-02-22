@@ -99,6 +99,8 @@ public class TagSetRegistry {
         TALISMANE_FR.addTag(new PosTag("NC", Pos.CommonNoun));
         TALISMANE_FR.addTag(new PosTag("NPP", Pos.ProperNoun));
         TALISMANE_FR.addTag(new PosTag("P", Pos.Preposition));
+        TALISMANE_FR.addTag(new PosTag("P+D", Pos.Preposition, Pos.Determiner));
+        TALISMANE_FR.addTag(new PosTag("P+PRO", Pos.Preposition, Pos.Pronoun));
         TALISMANE_FR.addTag(new PosTag("PONCT", LexicalCategory.Punctuation));
         TALISMANE_FR.addTag(new PosTag("PRO" , Pos.Pronoun));
         TALISMANE_FR.addTag(new PosTag("PROREL", Pos.RelativePronoun));

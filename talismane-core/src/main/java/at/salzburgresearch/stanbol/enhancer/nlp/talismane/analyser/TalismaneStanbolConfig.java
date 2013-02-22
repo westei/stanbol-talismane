@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 
 import com.joliciel.talismane.TalismaneSession;
 import com.joliciel.talismane.fr.TalismaneFrench;
-import com.joliciel.talismane.posTagger.PosTaggerLexicon;
+import com.joliciel.talismane.lexicon.PosTaggerLexicon;
 
 
 /**
@@ -69,7 +69,7 @@ public class TalismaneStanbolConfig extends TalismaneFrench{
         this.analysedTextFactory = atf;
         log.info("> init POS Tagger Lexicon ...");
         long start = System.currentTimeMillis();
-        this.posTaggerLexicon = super.getDefaultLexiconService();
+        this.posTaggerLexicon = super.getLexicon();
         log.info("  ... done in {}ms",System.currentTimeMillis()-start);
     }
 
@@ -103,30 +103,30 @@ public class TalismaneStanbolConfig extends TalismaneFrench{
      * {@link TalismaneSession#getLexicon()}
      */
     @Override
-    public PosTaggerLexicon getDefaultLexiconService() {
+    public PosTaggerLexicon getLexicon() {
         return posTaggerLexicon;
     }
     
-    /**
-     * Reads the rules of the parent implementations and adds two additional one
-     * that converts multiple line breaks to a single space and also marks
-     * multiple line breaks as sentence breaks
-     */
-    @Override
-    public InputStream getDefaultTextMarkerFiltersFromStream() {
-        try {
-            StringBuilder config = new StringBuilder(IOUtils.toString(super.getDefaultTextMarkerFiltersFromStream(),"UTF-8"));
-            config.append('\n');
-            config.append("RegexMarkerFilter\tSKIP,SENTENCE_BREAK\t(\\r\\n|[\\r\\n]){2}\t0");
-            //config.append("RegexMarkerFilter\tSPACE\t[^-\\r\\n](\\r\\n|[\\r\\n])\t1");
-            //replace multiple spaces with SPACE
-            //config.append("RegexMarkerFilter\tSPACE\t\\s{2,}\t0");
-            return new ByteArrayInputStream(config.toString().getBytes("UTF-8"));
-        } catch (IOException e) {
-            log.warn("Unable to apply additional RegexMarkerFilter",e);
-            return super.getDefaultTextMarkerFiltersFromStream();
-        }
-    }
+//    /**
+//     * Reads the rules of the parent implementations and adds two additional one
+//     * that converts multiple line breaks to a single space and also marks
+//     * multiple line breaks as sentence breaks
+//     */
+//    @Override
+//    public InputStream getDefaultTextMarkerFiltersFromStream() {
+//        try {
+//            StringBuilder config = new StringBuilder(IOUtils.toString(super.gtDefaultTextMarkerFiltersFromStream(),"UTF-8"));
+//            config.append('\n');
+//            config.append("RegexMarkerFilter\tSKIP,SENTENCE_BREAK\t(\\r\\n|[\\r\\n]){2}\t0");
+//            //config.append("RegexMarkerFilter\tSPACE\t[^-\\r\\n](\\r\\n|[\\r\\n])\t1");
+//            //replace multiple spaces with SPACE
+//            //config.append("RegexMarkerFilter\tSPACE\t\\s{2,}\t0");
+//            return new ByteArrayInputStream(config.toString().getBytes("UTF-8"));
+//        } catch (IOException e) {
+//            log.warn("Unable to apply additional RegexMarkerFilter",e);
+//            return super.getDefaultTextMarkerFiltersFromStream();
+//        }
+//    }
 
 
     /**
