@@ -1,7 +1,5 @@
 package at.salzburgresearch.stanbol.enhancer.nlp.talismane.server;
 
-import io.insideout.stanbol.enhancer.nlp.talismane.web.Constants;
-import io.insideout.stanbol.enhancer.nlp.talismane.web.TalismaneApplication;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
@@ -26,6 +24,8 @@ import org.slf4j.LoggerFactory;
 
 import at.salzburgresearch.stanbol.enhancer.nlp.talismane.analyser.TalismaneAnalyzer;
 import at.salzburgresearch.stanbol.enhancer.nlp.talismane.analyser.TalismaneStanbolConfig;
+import at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.Constants;
+import at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.TalismaneApplication;
 
 
 public class Main {

@@ -1,4 +1,4 @@
-package io.insideout.stanbol.enhancer.nlp.talismane.web.resource;
+package at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.resource;
 
 import java.io.InputStream;
 import java.net.URLConnection;

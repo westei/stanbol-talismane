@@ -1,4 +1,4 @@
-package io.insideout.stanbol.enhancer.nlp.talismane.web.util;
+package at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.util;
 
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;

@@ -1,4 +1,4 @@
-package io.insideout.stanbol.enhancer.nlp.talismane.web;
+package at.salzburgresearch.stanbol.enhancer.nlp.talismane.web;
 
 import org.apache.stanbol.enhancer.servicesapi.ContentItemFactory;
 

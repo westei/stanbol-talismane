@@ -1,9 +1,8 @@
-package io.insideout.stanbol.enhancer.nlp.talismane.web.resource;
+package at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.resource;
 
-import static io.insideout.stanbol.enhancer.nlp.talismane.web.Constants.SERVLET_ATTRIBUTE_TALISMANE;
+import static at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.Constants.SERVLET_ATTRIBUTE_TALISMANE;
 import static javax.ws.rs.core.HttpHeaders.CONTENT_LANGUAGE;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
-import io.insideout.stanbol.enhancer.nlp.talismane.web.util.Utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +29,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import at.salzburgresearch.stanbol.enhancer.nlp.talismane.analyser.TalismaneAnalyzer;
+import at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.util.Utils;
 
 @Path("/analysis")
 public class AnalysisResource {

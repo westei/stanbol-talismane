@@ -1,8 +1,6 @@
-package io.insideout.stanbol.enhancer.nlp.talismane.web.reader;
+package at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.reader;
 
-import static io.insideout.stanbol.enhancer.nlp.talismane.web.Constants.SERVLET_ATTRIBUTE_CONTENT_ITEM_FACTORY;
-import io.insideout.stanbol.enhancer.nlp.talismane.web.Constants;
-import io.insideout.stanbol.enhancer.nlp.talismane.web.util.Utils;
+import static at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.Constants.SERVLET_ATTRIBUTE_CONTENT_ITEM_FACTORY;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +19,9 @@ import javax.ws.rs.ext.Provider;
 import org.apache.stanbol.enhancer.servicesapi.Blob;
 import org.apache.stanbol.enhancer.servicesapi.ContentItemFactory;
 import org.apache.stanbol.enhancer.servicesapi.impl.StreamSource;
+
+import at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.Constants;
+import at.salzburgresearch.stanbol.enhancer.nlp.talismane.web.util.Utils;
 
 @Provider
 @Consumes(MediaType.TEXT_PLAIN)
